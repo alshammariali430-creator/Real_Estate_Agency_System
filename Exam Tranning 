@@ -1,0 +1,125 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPL/c70XG9fXS9jgJNrMbS5",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/alshammariali430-creator/Real_Estate_Agency_System/blob/main/Exam%20Tranning%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "SN8lhV0yMGtE",
+        "outputId": "79e9dfe9-f933-4514-bbfe-5d0022313b06"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Encryption Key: b'Wlo1ibs3BD_LlwtUYSHqsWaEQpnhAFkc7YeWQswFgO8=' \n",
+            "\n",
+            "Ciphertext: b'gAAAAABoypFqA3_J7h-ygJbLEojKBF1_oULV4v13I-_9-klZCJJf9-oTRuJo4eiznTBLtYuV-TQP_sOrtQxIcGhiASmgM3JAk0ljcR5Q_t5jzHfZXze2GBU=' \n",
+            "\n",
+            "decrypt: 12345@555-555-5555@Musa\n"
+          ]
+        }
+      ],
+      "source": [
+        "#Exam tranning\n",
+        "from cryptography.fernet import Fernet\n",
+        "# Generate a random encryption key\n",
+        "key = Fernet.generate_key()\n",
+        "cipher_suite = Fernet(key) #Create a Fernet object with the generated key.\n",
+        "# Employee ID and mobile number\n",
+        "employee_id = \"12345\"\n",
+        "mobile_number = \"555-555-5555\"\n",
+        "name=\"Musa\"\n",
+        "# Combine the employee ID and mobile number with \"@\" in between\n",
+        "data_to_encrypt = f\"{employee_id}@{mobile_number}@{name}\".encode()\n",
+        "# Encrypt the data\n",
+        "encrypted_data = cipher_suite.encrypt(data_to_encrypt)\n",
+        "# Decrypt the data\n",
+        "decrypted_data = cipher_suite.decrypt(encrypted_data).decode()\n",
+        "# Display the encryption key and ciphertext\n",
+        "print(f\"Encryption Key: {key} \\n\")\n",
+        "print(f\"Ciphertext: {encrypted_data} \\n\")\n",
+        "print(f\"decrypt: {decrypted_data}\")\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "REQfSEsWCJ_k"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#import the crypto library\n",
+        "from cryptography.fernet import Fernet\n",
+        "\n",
+        "#Generate a secrete key\n",
+        "key = Fernet.generate_key()\n",
+        "cipher_suite = Fernet(key)\n",
+        "\n",
+        "#encrypt the plain text with secrete key\n",
+        "cipher_text = cipher_suite.encrypt(b\"A really secret message. Not for prying eyes.\")\n",
+        "\n",
+        "#decrypt the cipher text with same secrete key\n",
+        "Decipher_text = cipher_suite.decrypt(cipher_text)\n",
+        "\n",
+        "# display all the information\n",
+        "print(\"Key is \",key)\n",
+        "print(\"Cipher Text \",cipher_text)\n",
+        "print(\"Decipher Text \",Decipher_text)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "2hVR1yUlMIv3",
+        "outputId": "6f67e879-3363-42fc-a357-07a341ec2776"
+      },
+      "execution_count": null,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Key is  b'HLqPaYw4Fwhcfidf9rPe6jVRR2GA0XyA18jtqG4fiIM='\n",
+            "Cipher Text  b'gAAAAABoyo3S7fnMxPkH7EDuI8mfxP3FFaeq2uvO-K1AHjX5y9wSNziavVQG3c_QMO8flWXZ3ikWVMc0tHQDHZkm7jYodXiLywO3rTl4wHRU6mEh9UO-n0mW2eL5IG9WrEeTegig9T5y'\n",
+            "Decipher Text  b'A really secret message. Not for prying eyes.'\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
